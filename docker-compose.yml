@@ -1,0 +1,20 @@
+services:
+  blog-api:
+    build: ./backend
+    container_name: blog-api
+    environment:
+      DB_PATH: /data/blog.db
+    volumes:
+      - blogdata:/data
+    networks:
+      - blognet
+    ports:
+      - "5000:5000"
+
+volumes:
+  blogdata:
+
+networks:
+  blognet:
+    name: blognet
+    driver: bridge
